@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pollinator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+</head>
+<body>
+  <header class="top">
+    <h1>🐝 Pollinator</h1>
+    <p>Two study groups, two Bees. Each of you connects your Bee and picks a conversation; Pollinator shows each of you only what the other group did differently: disagreements, other angles, what you missed, and their action items.</p>
+  </header>
+
+  <main>
+    <section class="cards">
+      <article class="card" data-slot="a"></article>
+      <article class="card" data-slot="b"></article>
+    </section>
+
+    <section class="run">
+      <button id="pollinate" class="primary" disabled>Cross-pollinate</button>
+      <p id="run-status" class="muted">Both participants need to pick a conversation.</p>
+    </section>
+
+    <section id="results" class="results" hidden>
+      <article class="result" data-slot="a">
+        <div class="result-bar">
+          <h2></h2>
+          <div class="actions">
+            <button data-action="md">Download .md</button>
+            <button data-action="pdf">Download PDF</button>
+          </div>
+        </div>
+        <div class="doc"></div>
+      </article>
+      <article class="result" data-slot="b">
+        <div class="result-bar">
+          <h2></h2>
+          <div class="actions">
+            <button data-action="md">Download .md</button>
+            <button data-action="pdf">Download PDF</button>
+          </div>
+        </div>
+        <div class="doc"></div>
+      </article>
+      <p class="muted center"><button id="restart" class="link">Start over</button> · Nothing is kept: outputs live only in this tab.</p>
+    </section>
+  </main>
+
+  <template id="card-template">
+    <div class="step step-name">
+      <h2 class="card-title"></h2>
+      <label>Your name (shown in the other person's notes)
+        <input class="name" maxlength="40" placeholder="e.g. Sam" />
+      </label>
+      <button class="primary connect">Connect Bee</button>
+      <p class="hint">Needs the Bee app with Developer Mode on (tap the app version 5× in Settings).</p>
+    </div>
+
+    <div class="step step-qr" hidden>
+      <h2 class="card-title"></h2>
+      <p>Scan with your phone, or open the link, then approve in the Bee app.</p>
+      <div class="qr"></div>
+      <a class="connect-link" target="_blank" rel="noopener">Open authentication link</a>
+      <p class="muted waiting">Waiting for approval…</p>
+      <button class="link cancel">Cancel</button>
+    </div>
+
+    <div class="step step-pick" hidden>
+      <h2 class="card-title"></h2>
+      <p class="connected"></p>
+      <form class="search">
+        <input class="query" placeholder="Search your conversations (e.g. photosynthesis)" />
+        <button type="submit">Search</button>
+      </form>
+      <ul class="convos"></ul>
+      <button class="primary use" disabled>Use this conversation</button>
+      <p class="muted">Selecting copies only this conversation and signs this Bee session out.</p>
+    </div>
+
+    <div class="step step-done" hidden>
+      <h2 class="card-title"></h2>
+      <p class="done-msg"></p>
+    </div>
+
+    <p class="error" hidden></p>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+{
+ "slot": "b",
+ "displayName": "Sam",
+ "conversationId": 202,
+ "title": "Midterm prep: Calvin cycle and C4/CAM",
+ "startTime": 1792600000000,
+ "utterances": [
+  {
+   "id": 2000,
+   "text": "Let's go through photosynthesis for the midterm. Sam, you take notes.",
+   "speaker": "Speaker 1",
+   "t": 1792600000000
+  },
+  {
+   "id": 2001,
+   "text": "Fine. So light reactions are in the thylakoids. Water gets split, that's photolysis, two H2O gives four H plus, four electrons and one O2.",
+   "speaker": "Speaker 2",
+   "t": 1792600015000
+  },
+  {
+   "id": 2002,
+   "text": "The oxygen we breathe comes from the water, not from the CO2. That's a classic trick question.",
+   "speaker": "Speaker 1",
+   "t": 1792600030000
+  },
+  {
+   "id": 2003,
+   "text": "Did you guys see the game last night? Unreal.",
+   "speaker": "Speaker 3",
+   "t": 1792600045000
+  },
+  {
+   "id": 2004,
+   "text": "Focus. Calvin cycle has three phases: carbon fixation, reduction, and regeneration of RuBP.",
+   "speaker": "Speaker 2",
+   "t": 1792600060000
+  },
+  {
+   "id": 2005,
+   "text": "RuBisCO is the enzyme for fixation, it's the most abundant protein on Earth.",
+   "speaker": "Speaker 1",
+   "t": 1792600075000
+  },
+  {
+   "id": 2006,
+   "text": "The product isn't glucose directly. It's G3P, glyceraldehyde three phosphate. Glucose is made from G3P later.",
+   "speaker": "Speaker 3",
+   "t": 1792600090000
+  },
+  {
+   "id": 2007,
+   "text": "For every three CO2 fixed you spend nine ATP and six NADPH, and you get one net G3P.",
+   "speaker": "Speaker 2",
+   "t": 1792600105000
+  },
+  {
+   "id": 2008,
+   "text": "Also C4 and CAM plants. C4 plants like corn separate carbon fixation spatially using PEP carboxylase to avoid photorespiration.",
+   "speaker": "Speaker 1",
+   "t": 1792600120000
+  },
+  {
+   "id": 2009,
+   "text": "CAM plants like cacti separate it in time, they open stomata at night.",
+   "speaker": "Speaker 3",
+   "t": 1792600135000
+  },
+  {
+   "id": 2010,
+   "text": "Photorespiration happens because RuBisCO can grab oxygen instead of CO2, especially when it's hot.",
+   "speaker": "Speaker 2",
+   "t": 1792600150000
+  },
+  {
+   "id": 2011,
+   "text": "Okay my mom's calling, I'll be right back.",
+   "speaker": "Speaker 1",
+   "t": 1792600165000
+  },
+  {
+   "id": 2012,
+   "text": "Oh and chlorophyll is green because it absorbs green light the most, so green light is the best for photosynthesis.",
+   "speaker": "Speaker 3",
+   "t": 1792600180000
+  },
+  {
+   "id": 2013,
+   "text": "For chemiosmosis I think of a dam. The protons pile up behind the membrane like water, and ATP synthase is the turbine they flow through to make ATP.",
+   "speaker": "Speaker 1",
+   "t": 1792600195000
+  },
+  {
+   "id": 2014,
+   "text": "We should really focus on photorespiration for the midterm, she said it's going to be on there.",
+   "speaker": "Speaker 2",
+   "t": 1792600210000
+  },
+  {
+   "id": 2015,
+   "text": "And everyone do the chapter 8 practice problems before Thursday.",
+   "speaker": "Speaker 3",
+   "t": 1792600225000
+  }
+ ]
+}

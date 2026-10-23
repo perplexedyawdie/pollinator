@@ -1,0 +1,81 @@
+{
+ "slot": "a",
+ "displayName": "Javel",
+ "conversationId": 101,
+ "title": "Photosynthesis study group: light reactions",
+ "startTime": 1792600000000,
+ "utterances": [
+  {
+   "id": 1000,
+   "text": "Okay is everybody here? Did anyone bring the charger, my laptop is dying.",
+   "speaker": "Speaker 1",
+   "t": 1792600000000
+  },
+  {
+   "id": 1001,
+   "text": "Use mine. Alright, photosynthesis. Let's start with the light dependent reactions.",
+   "speaker": "Speaker 2",
+   "t": 1792600015000
+  },
+  {
+   "id": 1002,
+   "text": "So the light dependent reactions happen in the thylakoid membranes, right? Inside the chloroplast.",
+   "speaker": "Speaker 1",
+   "t": 1792600030000
+  },
+  {
+   "id": 1003,
+   "text": "Yeah. Photosystem two absorbs light first, which is confusing because it's numbered two. Its reaction center is P680.",
+   "speaker": "Speaker 2",
+   "t": 1792600045000
+  },
+  {
+   "id": 1004,
+   "text": "And photosystem one is P700. The electrons go from photosystem two through the electron transport chain to photosystem one.",
+   "speaker": "Speaker 1",
+   "t": 1792600060000
+  },
+  {
+   "id": 1005,
+   "text": "The transport chain pumps protons into the thylakoid space, so you get a gradient, and ATP synthase uses that to make ATP. That's chemiosmosis.",
+   "speaker": "Speaker 3",
+   "t": 1792600075000
+  },
+  {
+   "id": 1006,
+   "text": "Then photosystem one passes electrons to NADP plus and you get NADPH. So the outputs are ATP, NADPH and oxygen.",
+   "speaker": "Speaker 2",
+   "t": 1792600090000
+  },
+  {
+   "id": 1007,
+   "text": "Honestly I'm so stressed about rent this month, my landlord keeps texting me.",
+   "speaker": "Speaker 3",
+   "t": 1792600105000
+  },
+  {
+   "id": 1008,
+   "text": "Ugh, sorry. Okay quickly, the Calvin cycle. It uses the ATP and NADPH in the stroma.",
+   "speaker": "Speaker 1",
+   "t": 1792600120000
+  },
+  {
+   "id": 1009,
+   "text": "RuBisCO fixes carbon dioxide onto RuBP. And I'm pretty sure the Calvin cycle makes glucose directly as its product.",
+   "speaker": "Speaker 2",
+   "t": 1792600135000
+  },
+  {
+   "id": 1010,
+   "text": "The professor said draw the Z scheme on the exam, it's like a guaranteed question.",
+   "speaker": "Speaker 3",
+   "t": 1792600150000
+  },
+  {
+   "id": 1011,
+   "text": "Okay, good. Let's do flashcards after lunch.",
+   "speaker": "Speaker 1",
+   "t": 1792600165000
+  }
+ ]
+}
