@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3b4250"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9aa1ad"/>
+    </marker>
+    <style>
+      .box { fill: #ffffff; stroke: #d5d9e0; stroke-width: 1.5; }
+      .name { font-size: 17px; font-weight: 650; fill: #1b1f27; }
+      .sub { font-size: 13px; fill: #5b6372; }
+      .line { fill: none; stroke: #3b4250; stroke-width: 2; marker-end: url(#arrow); }
+      .muted { fill: none; stroke: #9aa1ad; stroke-width: 2; stroke-dasharray: 6 5; marker-end: url(#arrow-muted); }
+      .label { font-size: 12.5px; fill: #3b4250; font-weight: 600; }
+      .label-bg { fill: #f6f7f9; }
+      .tag { font-size: 11px; font-weight: 700; fill: #ffffff; letter-spacing: 0.04em; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#f6f7f9"/>
+
+  <text x="40" y="44" font-size="26" font-weight="700" fill="#1b1f27">🐝 Pollinator: AWS architecture</text>
+
+  <!-- AWS boundary -->
+  <rect x="300" y="100" width="970" height="740" rx="14" fill="#ffffff" fill-opacity="0.55" stroke="#232f3e" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <rect x="300" y="100" width="190" height="30" rx="6" fill="#232f3e"/>
+  <text x="314" y="120" font-size="14" font-weight="700" fill="#ffffff">AWS Cloud · us-east-2</text>
+
+  <!-- ===== Users (left) ===== -->
+  <g>
+    <rect class="box" x="40" y="150" width="200" height="90" rx="10"/>
+    <rect x="40" y="150" width="8" height="90" rx="4" fill="#232f3e"/>
+    <text class="name" x="62" y="184">Bee app (phone)</text>
+    <text class="sub" x="62" y="206">Scans QR, approves</text>
+    <text class="sub" x="62" y="224">each participant's login</text>
+  </g>
+  <g>
+    <rect class="box" x="40" y="330" width="200" height="90" rx="10"/>
+    <rect x="40" y="330" width="8" height="90" rx="4" fill="#232f3e"/>
+    <text class="name" x="62" y="364">Browser</text>
+    <text class="sub" x="62" y="386">One page, two people;</text>
+    <text class="sub" x="62" y="404">holds sealed sessions</text>
+  </g>
+
+  <!-- ===== AWS services ===== -->
+  <!-- CloudFront (networking) -->
+  <g>
+    <rect class="box" x="340" y="330" width="190" height="90" rx="10"/>
+    <rect x="340" y="330" width="8" height="90" rx="4" fill="#8c4fff"/>
+    <text class="name" x="362" y="364">CloudFront</text>
+    <text class="sub" x="362" y="386">One HTTPS origin</text>
+    <text class="sub" x="362" y="404">for page and API</text>
+  </g>
+  <!-- S3 site (storage) -->
+  <g>
+    <rect class="box" x="580" y="150" width="190" height="90" rx="10"/>
+    <rect x="580" y="150" width="8" height="90" rx="4" fill="#7aa116"/>
+    <text class="name" x="602" y="184">S3: site</text>
+    <text class="sub" x="602" y="206">Static page, private</text>
+    <text class="sub" x="602" y="224">(Origin Access Control)</text>
+  </g>
+  <!-- API Gateway (networking) -->
+  <g>
+    <rect class="box" x="580" y="330" width="190" height="90" rx="10"/>
+    <rect x="580" y="330" width="8" height="90" rx="4" fill="#8c4fff"/>
+    <text class="name" x="602" y="364">API Gateway</text>
+    <text class="sub" x="602" y="386">HTTP API, throttled</text>
+    <text class="sub" x="602" y="404">10 req/s</text>
+  </g>
+  <!-- Lambda api (compute) -->
+  <g>
+    <rect class="box" x="820" y="330" width="190" height="90" rx="10"/>
+    <rect x="820" y="330" width="8" height="90" rx="4" fill="#ed7100"/>
+    <text class="name" x="842" y="364">Lambda: api</text>
+    <text class="sub" x="842" y="386">Runs the Bee CLI</text>
+    <text class="sub" x="842" y="404">arm64 · Node 22</text>
+  </g>
+  <!-- SSM (management) -->
+  <g>
+    <rect class="box" x="1040" y="150" width="190" height="90" rx="10"/>
+    <rect x="1040" y="150" width="8" height="90" rx="4" fill="#e7157b"/>
+    <text class="name" x="1062" y="184">Parameter Store</text>
+    <text class="sub" x="1062" y="206">SSM SecureStrings: seal</text>
+    <text class="sub" x="1062" y="224">key, Claude API key</text>
+  </g>
+  <!-- CloudWatch (management) -->
+  <g>
+    <rect class="box" x="580" y="560" width="190" height="90" rx="10"/>
+    <rect x="580" y="560" width="8" height="90" rx="4" fill="#e7157b"/>
+    <text class="name" x="602" y="594">CloudWatch Logs</text>
+    <text class="sub" x="602" y="616">Command names only,</text>
+    <text class="sub" x="602" y="634">7-day retention</text>
+  </g>
+  <!-- S3 data (storage) -->
+  <g>
+    <rect class="box" x="820" y="560" width="190" height="90" rx="10"/>
+    <rect x="820" y="560" width="8" height="90" rx="4" fill="#7aa116"/>
+    <text class="name" x="842" y="594">S3: job data</text>
+    <text class="sub" x="842" y="616">Transcripts, results;</text>
+    <text class="sub" x="842" y="634">expire after 1 day</text>
+  </g>
+  <!-- Lambda worker (compute) -->
+  <g>
+    <rect class="box" x="1040" y="560" width="190" height="90" rx="10"/>
+    <rect x="1040" y="560" width="8" height="90" rx="4" fill="#ed7100"/>
+    <text class="name" x="1062" y="594">Lambda: worker</text>
+    <text class="sub" x="1062" y="616">Extract · compare ·</text>
+    <text class="sub" x="1062" y="634">render differences</text>
+  </g>
+  <!-- Bedrock (not used) -->
+  <g opacity="0.75">
+    <rect x="1040" y="730" width="190" height="80" rx="10" fill="#ffffff" stroke="#9aa1ad" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <text class="name" x="1062" y="762" fill="#5b6372">Amazon Bedrock</text>
+    <text class="sub" x="1062" y="784">Fallback when no Claude</text>
+    <text class="sub" x="1062" y="800">key (blocked on account)</text>
+  </g>
+
+  <!-- ===== External services (right) ===== -->
+  <g>
+    <rect class="box" x="1330" y="330" width="230" height="90" rx="10"/>
+    <rect x="1330" y="330" width="8" height="90" rx="4" fill="#f2b824"/>
+    <text class="name" x="1352" y="364">Bee API</text>
+    <text class="sub" x="1352" y="386">Login pairing; the one</text>
+    <text class="sub" x="1352" y="404">picked conversation</text>
+  </g>
+  <g>
+    <rect class="box" x="1330" y="560" width="230" height="90" rx="10"/>
+    <rect x="1330" y="560" width="8" height="90" rx="4" fill="#d97757"/>
+    <text class="name" x="1352" y="594">Claude API</text>
+    <text class="sub" x="1352" y="616">Haiku 5.5: extract notes</text>
+    <text class="sub" x="1352" y="634">Sonnet 5.5: compare</text>
+  </g>
+
+  <!-- ===== Arrows ===== -->
+  <!-- Browser -> CloudFront -->
+  <path class="line" d="M240,375 L338,375"/>
+  <rect class="label-bg" x="244" y="350" width="50" height="18" rx="4"/>
+  <text class="label" x="249" y="363">HTTPS</text>
+
+  <!-- CloudFront -> S3 site -->
+  <path class="line" d="M435,330 L435,195 L578,195"/>
+  <rect class="label-bg" x="446" y="168" width="104" height="18" rx="4"/>
+  <text class="label" x="452" y="181">/*  the page</text>
+
+  <!-- CloudFront -> API Gateway -->
+  <path class="line" d="M530,375 L578,375"/>
+  <text class="label" x="536" y="366">/api/*</text>
+
+  <!-- API Gateway -> Lambda api -->
+  <path class="line" d="M770,375 L818,375"/>
+
+  <!-- Lambda api -> Bee API -->
+  <path class="line" d="M1010,375 L1328,375"/>
+  <rect class="label-bg" x="1100" y="350" width="150" height="18" rx="4"/>
+  <text class="label" x="1106" y="363">bee login · transcript</text>
+
+  <!-- Phone -> Bee API (approval), routed above the AWS boundary -->
+  <path class="line" d="M140,150 L140,72 L1445,72 L1445,328"/>
+  <rect class="label-bg" x="700" y="62" width="196" height="20" rx="4"/>
+  <text class="label" x="708" y="77">approve login (QR / link)</text>
+
+  <!-- Lambda api -> SSM -->
+  <path class="line" d="M940,330 L940,195 L1038,195"/>
+  <rect class="label-bg" x="950" y="250" width="66" height="34" rx="4"/>
+  <text class="label" x="956" y="264">secrets</text>
+  <text class="label" x="956" y="279">(both fns)</text>
+
+  <!-- Lambda api -> S3 data -->
+  <path class="line" d="M915,420 L915,558"/>
+  <rect class="label-bg" x="924" y="470" width="70" height="18" rx="4"/>
+  <text class="label" x="930" y="483">jobs/…</text>
+
+  <!-- Lambda api -> worker (async) -->
+  <path class="line" d="M990,420 L990,505 L1135,505 L1135,558"/>
+  <rect class="label-bg" x="1030" y="480" width="96" height="18" rx="4"/>
+  <text class="label" x="1036" y="493">async invoke</text>
+
+  <!-- worker <-> S3 data -->
+  <path class="line" d="M1040,605 L1012,605"/>
+
+  <!-- worker -> Claude API -->
+  <path class="line" d="M1230,605 L1328,605"/>
+
+  <!-- worker -> Bedrock (unused) -->
+  <path class="muted" d="M1135,650 L1135,728"/>
+
+  <!-- Lambdas -> CloudWatch -->
+  <path class="line" d="M850,420 L850,520 L675,520 L675,558"/>
+  <rect class="label-bg" x="690" y="508" width="40" height="18" rx="4"/>
+  <text class="label" x="696" y="521">logs</text>
+
+  <!-- ===== Footer ===== -->
+  <text x="40" y="880" font-size="14" fill="#5b6372">All pay-per-use, so idle cost is near zero. No accounts or stored credentials: each Bee session is sealed (AES-256-GCM) and held only by the browser tab. Raw transcripts are deleted after extraction.</text>
+
+  <!-- Legend -->
+  <g font-size="12.5" fill="#3b4250">
+    <rect x="40" y="520" width="200" height="190" rx="10" fill="#ffffff" stroke="#d5d9e0"/>
+    <text x="56" y="546" font-weight="700" font-size="13.5">Legend</text>
+    <rect x="56" y="560" width="12" height="12" rx="3" fill="#8c4fff"/><text x="76" y="571">Networking</text>
+    <rect x="56" y="582" width="12" height="12" rx="3" fill="#ed7100"/><text x="76" y="593">Compute</text>
+    <rect x="56" y="604" width="12" height="12" rx="3" fill="#7aa116"/><text x="76" y="615">Storage</text>
+    <rect x="56" y="626" width="12" height="12" rx="3" fill="#e7157b"/><text x="76" y="637">Secrets and logs</text>
+    <rect x="56" y="648" width="12" height="12" rx="3" fill="#f2b824"/><text x="76" y="659">External service</text>
+    <line x1="56" y1="684" x2="84" y2="684" stroke="#9aa1ad" stroke-width="2" stroke-dasharray="6 5"/><text x="92" y="688">Not used currently</text>
+  </g>
+</svg>

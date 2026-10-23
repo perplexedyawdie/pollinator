@@ -24,13 +24,9 @@ For development without a container: `npm install`, then `npm run dev`.
 
 ## Deploy to AWS (Terraform)
 
-```
-CloudFront ─┬─ /*      → S3 (private) static page
-            └─ /api/*  → API Gateway HTTP API → Lambda "api" (arm64, runs the Bee CLI)
-                                                  ├─ S3 job data (expires after 1 day)
-                                                  ├─ SSM SecureStrings: session seal key, Claude API key
-                                                  └─ async → Lambda "worker" → Claude API
-```
+![Pollinator AWS architecture: CloudFront serves the page from S3 and forwards /api/* through API Gateway to a Lambda that runs the Bee CLI; an async worker Lambda calls the Claude API; job data lives in S3 for at most a day and secrets in SSM Parameter Store](docs/architecture.png)
+
+Source: [`docs/architecture.svg`](docs/architecture.svg).
 
 ```bash
 npm install && npm run build        # bundles the functions into dist/api.zip and dist/worker.zip
