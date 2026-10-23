@@ -7,3 +7,4 @@ infra/*.tfstate*
 infra/tfplan
 infra/*.tfvars
 video/out/
+.DS_Store
