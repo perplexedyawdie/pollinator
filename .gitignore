@@ -4,4 +4,5 @@ dist/
 .env
 infra/.terraform/
 infra/*.tfstate*
-infra/.terraform.lock.hcl
+infra/tfplan
+infra/*.tfvars
