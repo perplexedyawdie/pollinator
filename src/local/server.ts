@@ -9,9 +9,11 @@ import { parseKey } from "../core/seal.js";
 import { LocalStorage, localDataDir } from "../core/storage.js";
 import { runPipeline } from "../pipeline/run.js";
 
-const root = resolve(fileURLToPath(import.meta.url), "../../..");
+// POLLINATOR_ROOT lets the bundled server (dist/local/server.mjs) find web/ and .data/.
+const root = process.env.POLLINATOR_ROOT ?? resolve(fileURLToPath(import.meta.url), "../../..");
 const webDir = join(root, "web");
 const port = Number(process.env.PORT ?? 8787);
+const host = process.env.HOST ?? "127.0.0.1"; // the container sets 0.0.0.0
 
 const platform = { darwin: "mac", linux: "linux" }[process.platform as "darwin" | "linux"];
 const binary =
@@ -74,6 +76,6 @@ createServer(async (req, res) => {
   } catch {
     res.writeHead(404).end("Not found");
   }
-}).listen(port, "127.0.0.1", () => {
+}).listen(port, host, () => {
   console.log(`Pollinator running at http://localhost:${port}`);
 });
