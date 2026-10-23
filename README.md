@@ -22,6 +22,31 @@ Open http://localhost:8787. Stop with `podman compose down` (add `-v` to also re
 
 For development without a container: `npm install`, then `npm run dev`.
 
+## Deploy to AWS (Terraform)
+
+```
+CloudFront ─┬─ /*      → S3 (private) static page
+            └─ /api/*  → API Gateway HTTP API → Lambda "api" (arm64, runs the Bee CLI)
+                                                  ├─ S3 job data (expires after 1 day)
+                                                  ├─ SSM SecureStrings: session seal key, Claude API key
+                                                  └─ async → Lambda "worker" → Claude API
+```
+
+```bash
+npm install && npm run build        # bundles the functions into dist/api.zip and dist/worker.zip
+cd infra
+terraform init
+export TF_VAR_claude_api_key=sk-ant-...   # omit to use Amazon Bedrock instead
+terraform plan
+terraform apply                     # prints site_url
+```
+
+Re-run `npm run build && terraform apply` after code changes. Remove everything with `terraform destroy`.
+
+**Cost:** everything is pay-per-use, so idle cost is close to zero. Each comparison costs a few cents in Claude API usage. API Gateway throttling (10 requests/s) and Lambda concurrency caps limit what a burst of traffic can cost. Use an IAM user or role rather than root credentials to deploy.
+
+**Bedrock note:** Pollinator was built for Amazon Bedrock first, but on our hackathon account every model call (Claude and Amazon Nova alike) failed with `Error 002: Access to Bedrock models is not allowed for this account`. The Claude API is the default for now. The Bedrock path stays in the code (`src/pipeline/llm.ts`) and is used whenever no Claude API key is set.
+
 ## How it works
 
 1. **Bee login, nothing stored.** "Connect Bee" runs `bee login` in a throwaway config folder and shows its link as a QR code. After you approve in the Bee app, the folder is encrypted (AES-256-GCM) and handed to your browser tab, which sends it back with each request. The server keeps no sessions or credentials. Picking a conversation copies only that transcript and signs the session out.
@@ -46,3 +71,11 @@ Raw transcripts are deleted as soon as notes are extracted.
 npm test           # unit tests: merge/render, citation check, session sealing
 npm run fixtures   # full pipeline on two synthetic transcripts (calls the model)
 ```
+
+## Privacy
+
+- Bee data is end-to-end encrypted and only its owner can read it. Pollinator only reads the one conversation each person picks, after they approve the login in the Bee app.
+- No accounts, no stored credentials: sealed Bee sessions live in the browser tab and expire after 30 minutes. Picking a conversation signs that session out.
+- Raw transcripts are deleted right after extraction. Results are kept only until the page downloads them (and expire from S3 after 1 day).
+- Logs record only Bee command names and exit codes, never their output.
+- `bee logout` clears the local session. Run `bee external-access` to see which services have accessed your Bee data.
