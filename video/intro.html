@@ -63,6 +63,7 @@
   #title .small { font-size: 46px; color: var(--muted); }
   #title .big { font-size: 140px; font-weight: 800; color: var(--honey); letter-spacing: -0.02em; margin-top: 6px; }
   #title .tag { font-size: 38px; color: var(--text); margin-top: 18px; }
+  #title .powered { display: inline-block; margin-top: 54px; padding: 12px 28px; border-radius: 999px; border: 2px solid var(--honey); font-size: 32px; font-weight: 650; color: var(--honey); }
 </style>
 </head>
 <body>
@@ -127,6 +128,7 @@
     <div class="small">So we built</div>
     <div class="big">🐝 Pollinator</div>
     <div class="tag">See only what the other group did differently.</div>
+    <div class="powered" id="powered">Powered by your 🐝 Bee wearable</div>
   </div>
 
 <script>
@@ -269,6 +271,10 @@
     const titleIn = easeOut(prog(t, c1 + 0.2, c1 + 1.0));
     $("title").style.opacity = titleIn;
     $("title").style.transform = `scale(${0.96 + 0.04 * titleIn})`;
+    // Late line for a long title beat (lands on "…using Bee wearable").
+    const poweredIn = easeOut(part(t, c1, T.end, 0.62, 0.72));
+    $("powered").style.opacity = poweredIn;
+    $("powered").style.transform = `translateY(${(1 - poweredIn) * 16}px)`;
   }
   window.render = render;
   render(0);
