@@ -75,3 +75,7 @@ npm run fixtures   # full pipeline on two synthetic transcripts (calls the model
 - Raw transcripts are deleted right after extraction. Results are kept only until the page downloads them (and expire from S3 after 1 day).
 - Logs record only Bee command names and exit codes, never their output.
 - `bee logout` clears the local session. Run `bee external-access` to see which services have accessed your Bee data.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
