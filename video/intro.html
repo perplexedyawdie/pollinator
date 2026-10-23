@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pollinator intro</title>
+<style>
+  :root {
+    --bg: #17150f;
+    --surface: #221f18;
+    --text: #f1ece2;
+    --muted: #a59e8f;
+    --honey: #f2b824;
+    --blue: #6c9cf2;
+    --border: #3a352b;
+    --bad: #ff6b5e;
+    --good: #7bd389;
+  }
+  html, body {
+    margin: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  .abs { position: absolute; left: 0; top: 0; will-change: transform, opacity; }
+  #cap { width: 1920px; top: 96px; text-align: center; font-size: 66px; font-weight: 760; letter-spacing: -0.01em; }
+  #sub { width: 1920px; top: 192px; text-align: center; font-size: 36px; color: var(--muted); }
+
+  .group { width: 420px; height: 300px; }
+  .group svg { display: block; margin: 0 auto; }
+  .group .label { text-align: center; font-size: 32px; font-weight: 650; color: var(--muted); margin-top: 14px; }
+  .bee { display: inline-block; margin-left: 10px; padding: 4px 12px; border-radius: 999px; background: var(--honey); color: var(--bg); font-size: 22px; font-weight: 700; vertical-align: 4px; }
+
+  .bubble { padding: 16px 26px; border-radius: 28px; background: var(--surface); border: 3px solid var(--border); font-size: 30px; font-weight: 600; white-space: nowrap; }
+  .bubble.a { border-color: var(--blue); }
+  .bubble.b { border-color: var(--honey); }
+
+  #card { width: 720px; height: 380px; border-radius: 28px; background: var(--surface); border: 3px solid var(--honey); padding: 36px 48px; box-sizing: border-box; }
+  #card h3 { margin: 0 0 26px; font-size: 40px; }
+  #card .check { font-size: 36px; margin: 18px 0; }
+  #card .check b { color: var(--good); margin-right: 14px; }
+
+  .panel { width: 540px; height: 470px; border-radius: 28px; background: var(--surface); border: 3px solid var(--border); box-sizing: border-box; padding: 30px 32px; }
+  .panel h4 { margin: 0 0 22px; font-size: 32px; line-height: 1.2; }
+  .stamp { width: 84px; height: 84px; border-radius: 50%; background: var(--bad); color: #fff; font-size: 54px; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(0,0,0,.4); }
+  .pad { position: relative; height: 300px; border-radius: 16px; background: #f4efe2; overflow: hidden; }
+  .pad .rule { position: absolute; left: 24px; right: 24px; height: 2px; background: #d9d1bf; }
+  .pad .ink { position: absolute; left: 28px; font-size: 26px; color: #2b2b2b; font-family: "Bradley Hand", "Marker Felt", cursive; white-space: nowrap; overflow: hidden; }
+  .chip { padding: 8px 16px; border-radius: 18px; background: #2d2a22; border: 2px solid var(--border); font-size: 22px; white-space: nowrap; color: var(--text); }
+  .wave { display: flex; align-items: center; gap: 5px; height: 90px; }
+  .wave i { display: block; width: 7px; border-radius: 4px; background: #4a4436; }
+  .bar { position: relative; height: 12px; border-radius: 6px; background: #3a352b; margin-top: 18px; }
+  .bar .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; background: var(--honey); }
+  .time { margin-top: 16px; font-size: 30px; font-variant-numeric: tabular-nums; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 10px; font-size: 24px; }
+  .grid div { background: #2d2a22; border-radius: 10px; padding: 12px 14px; text-align: center; }
+  .grid .h { background: none; color: var(--muted); font-weight: 650; }
+  .grid .q { color: var(--honey); font-weight: 800; font-size: 30px; padding: 8px; }
+
+  #title { width: 1920px; top: 380px; text-align: center; }
+  #title .small { font-size: 46px; color: var(--muted); }
+  #title .big { font-size: 140px; font-weight: 800; color: var(--honey); letter-spacing: -0.02em; margin-top: 6px; }
+  #title .tag { font-size: 38px; color: var(--text); margin-top: 18px; }
+</style>
+</head>
+<body>
+  <div id="cap" class="abs"></div>
+  <div id="sub" class="abs"></div>
+
+  <div id="groupA" class="abs group">
+    <svg width="300" height="190" viewBox="0 0 300 190" fill="#6c9cf2">
+      <circle cx="70" cy="60" r="30"/><rect x="30" y="100" width="80" height="80" rx="36"/>
+      <circle cx="150" cy="48" r="34"/><rect x="104" y="92" width="92" height="98" rx="42"/>
+      <circle cx="230" cy="60" r="30"/><rect x="190" y="100" width="80" height="80" rx="36"/>
+    </svg>
+    <div class="label">Your group<span class="bee">🐝 Bee</span></div>
+  </div>
+  <div id="groupB" class="abs group">
+    <svg width="300" height="190" viewBox="0 0 300 190" fill="#f2b824">
+      <circle cx="70" cy="60" r="30"/><rect x="30" y="100" width="80" height="80" rx="36"/>
+      <circle cx="150" cy="48" r="34"/><rect x="104" y="92" width="92" height="98" rx="42"/>
+      <circle cx="230" cy="60" r="30"/><rect x="190" y="100" width="80" height="80" rx="36"/>
+    </svg>
+    <div class="label">Friend's group<span class="bee">🐝 Bee</span></div>
+  </div>
+
+  <div id="bubbles"></div>
+
+  <div id="card" class="abs">
+    <h3>📒 Combined notes</h3>
+    <div class="check" id="c0"><b>✓</b>No blind spots</div>
+    <div class="check" id="c1"><b>✓</b>No missing topics</div>
+    <div class="check" id="c2"><b>✓</b>No wrong facts</div>
+  </div>
+
+  <div id="p0" class="abs panel">
+    <h4>✍️ Written notes miss<br/>the conversation</h4>
+    <div class="pad" id="pad">
+      <div class="rule" style="top:70px"></div><div class="rule" style="top:130px"></div>
+      <div class="rule" style="top:190px"></div><div class="rule" style="top:250px"></div>
+      <div class="ink" id="ink0" style="top:34px">Calvin cycle → glucose?</div>
+      <div class="ink" id="ink1" style="top:94px">PS II first</div>
+    </div>
+  </div>
+  <div id="p1" class="abs panel">
+    <h4>🎧 Nobody has time to<br/>replay an hour of audio</h4>
+    <div class="wave" id="wave"></div>
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="time" id="time">00:00 / 60:00</div>
+  </div>
+  <div id="p2" class="abs panel">
+    <h4>🔍 …then cross-reference<br/>it all by hand</h4>
+    <div class="grid" id="grid">
+      <div class="h"></div><div class="h">Mine</div><div class="h">Theirs</div>
+      <div>Agreed?</div><div class="q">?</div><div class="q">?</div>
+      <div>Missed?</div><div class="q">?</div><div class="q">?</div>
+      <div>Conflicts?</div><div class="q">?</div><div class="q">?</div>
+    </div>
+  </div>
+  <div id="s0" class="abs stamp">✕</div>
+  <div id="s1" class="abs stamp">✕</div>
+  <div id="s2" class="abs stamp">✕</div>
+
+  <div id="title" class="abs">
+    <div class="small">So we built</div>
+    <div class="big">🐝 Pollinator</div>
+    <div class="tag">See only what the other group did differently.</div>
+  </div>
+
+<script>
+  // Scene boundaries in seconds; render.mjs can override them (?timing=...)
+  // to line the beats up with the voiceover.
+  const DEFAULT_TIMING = { situation: 0, goal: 8, conflict: 14, title: 24, end: 26.5 };
+  const T = Object.assign({}, DEFAULT_TIMING, JSON.parse(new URLSearchParams(location.search).get("timing") || "{}"));
+  window.TIMING = T;
+
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const prog = (t, a, b) => clamp((t - a) / (b - a));
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+  const easeInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+  const pop = (x) => { if (x <= 0) return 0; if (x >= 1) return 1; const c1 = 1.7, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+  // Progress through a fraction [fa, fb] of the beat [s, e].
+  const part = (t, s, e, fa, fb) => prog(t, s + (e - s) * fa, s + (e - s) * fb);
+  const $ = (id) => document.getElementById(id);
+  const place = (el, x, y, { s = 1, o = 1, r = 0 } = {}) => {
+    el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${s}) rotate(${r}deg)`;
+    el.style.opacity = o;
+  };
+
+  // Study snippets each group said out loud.
+  const BUBBLES = [
+    { side: "a", text: "Calvin cycle makes glucose?", x: 330, y: 405 },
+    { side: "b", text: "It's G3P, not glucose", x: 1590, y: 405 },
+    { side: "a", text: "PS II absorbs light first", x: 640, y: 295 },
+    { side: "b", text: "Think of it like a dam", x: 1280, y: 295 },
+    { side: "a", text: "Z scheme is on the exam", x: 300, y: 850 },
+    { side: "b", text: "Focus on photorespiration", x: 1620, y: 850 },
+    { side: "a", text: "ATP synthase + gradient", x: 660, y: 965 },
+    { side: "b", text: "C4 vs CAM plants", x: 1270, y: 965 },
+  ];
+  const bubbleEls = BUBBLES.map((b) => {
+    const el = document.createElement("div");
+    el.className = `abs bubble ${b.side}`;
+    el.textContent = b.text;
+    $("bubbles").appendChild(el);
+    return el;
+  });
+
+  // Falling chips: what the notepad failed to catch.
+  const CHIPS = ["Think of it like a dam", "Focus on photorespiration", "It's G3P, not glucose"];
+  const chipEls = CHIPS.map((text) => {
+    const el = document.createElement("div");
+    el.className = "abs chip";
+    el.textContent = text;
+    document.body.appendChild(el);
+    return el;
+  });
+
+  const WAVE = Array.from({ length: 52 }, (_, i) => 18 + Math.round(60 * Math.abs(Math.sin(i * 1.7) * Math.cos(i * 0.6))));
+  $("wave").innerHTML = WAVE.map((h) => `<i style="height:${h}px"></i>`).join("");
+  const qs = [...document.querySelectorAll("#grid .q")];
+
+  const CAPTIONS = [
+    { from: "situation", to: "goal", cap: "Same exam. Two study groups.", sub: "The best insights happen out loud.", subAt: 0.55 },
+    { from: "goal", to: "conflict", cap: "Goal: combine both sessions", sub: "…so neither of us walks into the exam with blind spots.", subAt: 0.4 },
+    { from: "conflict", to: "title", cap: "Why it fails today", sub: "Nobody has time for that.", subAt: 0.9 },
+  ];
+
+  function captions(t) {
+    const c = CAPTIONS.find((c) => t >= T[c.from] && t < T[c.to]);
+    if (!c) { $("cap").style.opacity = 0; $("sub").style.opacity = 0; return; }
+    const s = T[c.from], e = T[c.to];
+    const fade = Math.min(prog(t, s, s + 0.45), 1 - prog(t, e - 0.35, e));
+    $("cap").textContent = c.cap;
+    $("cap").style.opacity = fade;
+    $("cap").style.transform = `translateY(${(1 - easeOut(prog(t, s, s + 0.6))) * 24}px)`;
+    $("sub").textContent = c.sub;
+    const subIn = part(t, s, e, c.subAt, c.subAt + 0.08);
+    $("sub").style.opacity = Math.min(subIn, fade);
+  }
+
+  function render(t) {
+    captions(t);
+    const g0 = T.goal, g1 = T.conflict, c0 = T.conflict, c1 = T.title;
+
+    // ---- Beat 1: two groups talking; beat 2 dims them.
+    const groupsIn = easeOut(part(t, T.situation, T.goal, 0, 0.15));
+    const groupsDim = 1 - 0.7 * easeInOut(part(t, g0, g1, 0, 0.4));
+    const groupsOut = 1 - prog(t, c0, c0 + 0.5);
+    const gOpacity = groupsIn * groupsDim * groupsOut;
+    place($("groupA"), 520 - (1 - groupsIn) * 80, 640, { o: gOpacity });
+    place($("groupB"), 1400 + (1 - groupsIn) * 80, 640, { o: gOpacity });
+
+    // ---- Bubbles pop in (beat 1), then fly into the combined card (beat 2).
+    BUBBLES.forEach((b, i) => {
+      const el = bubbleEls[i];
+      const appear = pop(part(t, T.situation, T.goal, 0.18 + i * 0.075, 0.27 + i * 0.075));
+      const fly = easeInOut(part(t, g0, g1, 0.02 + i * 0.03, 0.4 + i * 0.03));
+      const x = b.x + (960 - b.x) * fly;
+      const y = b.y + (640 - b.y) * fly;
+      const o = Math.min(1, appear * 1.5) * (1 - prog(fly, 0.75, 1));
+      place(el, x, y, { s: appear * (1 - 0.5 * fly), o });
+    });
+
+    // ---- Beat 2: the combined notes card the students want.
+    const cardIn = pop(part(t, g0, g1, 0.32, 0.5));
+    const cardOut = 1 - prog(t, c0, c0 + 0.45);
+    place($("card"), 960, 640, { s: 0.6 + 0.4 * cardIn, o: Math.min(1, cardIn) * cardOut });
+    ["c0", "c1", "c2"].forEach((id, i) => {
+      const k = easeOut(part(t, g0, g1, 0.52 + i * 0.12, 0.6 + i * 0.12));
+      $(id).style.opacity = k;
+      $(id).style.transform = `translateX(${(1 - k) * 30}px)`;
+    });
+
+    // ---- Beat 3: three ways it fails today.
+    const panelsOut = 1 - prog(t, c1, c1 + 0.4);
+    const xs = [380, 960, 1540];
+    [0, 1, 2].forEach((k) => {
+      const start = 0.06 + k * 0.29;
+      const inP = easeOut(part(t, c0, c1, start, start + 0.07));
+      place($(`p${k}`), xs[k], 600 + (1 - inP) * 40, { o: inP * panelsOut });
+      const stamp = pop(part(t, c0, c1, start + 0.2, start + 0.26));
+      place($(`s${k}`), xs[k] + 230, 380, { s: stamp, o: Math.min(1, stamp * 2) * panelsOut, r: -12 * (1 - stamp) });
+    });
+
+    // Panel 1: the notepad catches two lines; the rest of the conversation falls away.
+    const p0 = part(t, c0, c1, 0.08, 0.3);
+    $("ink0").style.width = `${easeOut(prog(p0, 0, 0.4)) * 420}px`;
+    $("ink1").style.width = `${easeOut(prog(p0, 0.3, 0.6)) * 420}px`;
+    chipEls.forEach((el, i) => {
+      const f = prog(p0, 0.15 + i * 0.15, 0.75 + i * 0.1);
+      const inPanel = easeOut(part(t, c0, c1, 0.06, 0.13)) * panelsOut;
+      place(el, 380 + (i - 1) * 120, 470 + easeInOut(f) * 420, { o: inPanel * (1 - prog(f, 0.55, 1)) * (f > 0 ? 1 : 0), r: (i - 1) * 8 * f });
+    });
+
+    // Panel 2: a 60-minute recording where the playhead barely moves.
+    const p1 = part(t, c0, c1, 0.36, 0.62);
+    const secs = Math.floor(p1 * 9);
+    $("fill").style.width = `${1 + p1 * 3}%`;
+    $("time").textContent = `00:0${secs} / 60:00`;
+
+    // Panel 3: the manual cross-reference fills with question marks.
+    const p2 = part(t, c0, c1, 0.65, 0.85);
+    qs.forEach((q, i) => { q.style.opacity = prog(p2, i / qs.length, (i + 1) / qs.length); });
+
+    // ---- Title card.
+    const titleIn = easeOut(prog(t, c1 + 0.2, c1 + 1.0));
+    $("title").style.opacity = titleIn;
+    $("title").style.transform = `scale(${0.96 + 0.04 * titleIn})`;
+  }
+  window.render = render;
+  render(0);
+</script>
+</body>
+</html>
