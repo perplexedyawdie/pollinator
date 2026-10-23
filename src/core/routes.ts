@@ -45,7 +45,9 @@ export async function handle(deps: Deps, method: string, path: string, body: Bod
   } catch (err) {
     const status = (err as { status?: number }).status ?? 500;
     if (status >= 500) console.error(err);
-    return { status, body: { error: err instanceof Error ? err.message : "Unexpected error" } };
+    // Unexpected errors can carry internal details (ARNs, paths); keep them in the logs.
+    const message = status === 500 ? "Something went wrong, please try again" : err instanceof Error ? err.message : "Unexpected error";
+    return { status, body: { error: message } };
   }
 }
 

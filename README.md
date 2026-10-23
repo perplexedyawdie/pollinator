@@ -43,7 +43,7 @@ terraform apply                     # prints site_url
 
 Re-run `npm run build && terraform apply` after code changes. Remove everything with `terraform destroy`.
 
-**Cost:** everything is pay-per-use, so idle cost is close to zero. Each comparison costs a few cents in Claude API usage. API Gateway throttling (10 requests/s) and Lambda concurrency caps limit what a burst of traffic can cost. Use an IAM user or role rather than root credentials to deploy.
+**Cost:** everything is pay-per-use, so idle cost is close to zero. Each comparison costs a few cents in Claude API usage. API Gateway throttling (10 requests/s) and the account's Lambda concurrency limit cap what a burst of traffic can cost (optional per-function caps: `api_max_concurrency`, `worker_max_concurrency`). Use an IAM user or role rather than root credentials to deploy.
 
 **Bedrock note:** Pollinator was built for Amazon Bedrock first, but on our hackathon account every model call (Claude and Amazon Nova alike) failed with `Error 002: Access to Bedrock models is not allowed for this account`. The Claude API is the default for now. The Bedrock path stays in the code (`src/pipeline/llm.ts`) and is used whenever no Claude API key is set.
 

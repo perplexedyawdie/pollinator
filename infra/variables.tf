@@ -26,14 +26,16 @@ variable "api_throttle_burst" {
   default = 20
 }
 
+# Reserved concurrency needs headroom: AWS keeps at least 10 executions
+# unreserved, so new accounts (limit 10) must leave these at -1 (no cap).
 variable "api_max_concurrency" {
-  description = "Reserved concurrency cap for the API function."
+  description = "Reserved concurrency cap for the API function; -1 for none."
   type        = number
-  default     = 10
+  default     = -1
 }
 
 variable "worker_max_concurrency" {
-  description = "Reserved concurrency cap for the pipeline worker."
+  description = "Reserved concurrency cap for the pipeline worker; -1 for none."
   type        = number
-  default     = 5
+  default     = -1
 }
